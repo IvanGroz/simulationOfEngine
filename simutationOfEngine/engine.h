@@ -21,14 +21,16 @@ private:
 	bool simulationState = false;//Состояние симуляции
 
 	float timer = 0.0f; //время симуляции
+
+	float calcTempVel() {//Рассчет итоговой скорости изменения температуры
+		return velHeat - velCool;
+	}
 public:
 	engine() {}
 	engine(float envTemp) {
 		environmentTemp = engineTemp = envTemp; //Температура двигателя до момента старта должна равняться температуре окружающей среды.
 	}
-	float calcTempVel() {//Рассчет итоговой скорости изменения температуры
-		return velHeat - velCool;
-	}
+	
 	void simulation(float deltaTime);
 	void update();//перерасчет характеристик во времени
 	void start();
